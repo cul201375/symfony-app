@@ -10,4 +10,5 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
-import './controller/login_controller'
+import './controller/main_controller';
+import './javascript/home_page';
