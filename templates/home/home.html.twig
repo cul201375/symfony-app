@@ -1,8 +1,14 @@
 {% extends "base.html.twig" %}
 {% block body %}
+    {% if app.user %}
+        <div class="mb-3">
+            Bienvenido <h1>{{ app.user.getPrimerNombre }}</h1>, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
     Praesentium totam architecto nemo quis nostrum temporibus maiores odio
      reiciendis, exercitationem voluptates minima impedit amet distinctio 
      vitae nesciunt dolorum doloremque soluta iure!</p>
 
+    
 {% endblock %}

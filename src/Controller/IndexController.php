@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class IndexController extends AbstractController
 {
-    #[Route(path: '/', name: 'app_index')]
+    #[Route(path: '/index', name: 'app_index')]
     public function index(): Response
     {
         return $this->render('index/index.html.twig');
