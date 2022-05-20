@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="vw-100 vh-100">
+        <div class="w-100 h-100 d-fex justify-content-center aling-items-center">
+            <a class="btn btn-success" href="{{path('app_login')}}">
+                login
+            </a>
+            <a class="btn btn-success" href="{{path('app_register')}}">
+                register
+            </a>
+        </div>
+    </div>
+{% endblock %}
