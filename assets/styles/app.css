@@ -1,2 +1,6 @@
 @import '~bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all';
+
+body{
+    background-color: rgb(236, 239, 43) !important;
+}

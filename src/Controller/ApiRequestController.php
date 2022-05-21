@@ -30,7 +30,7 @@ class ApiRequestController extends AbstractController {
         else{
             $response = $generateCliente->request(
                 'GET',
-                'https://pokeapi.co/api/v2/pokemon?limit=50&offset=0'
+                'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0'
             );
     
             $statusCode = $response->getStatusCode();
