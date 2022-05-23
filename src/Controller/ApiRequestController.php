@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use LDAP\Result;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,11 +12,16 @@ class ApiRequestController extends AbstractController {
 
     //GET POKEMOS ENDPOINT
     #[Route('/api/v1/pokemons/{pokemon}', name: 'api_get_pokemon', methods: 'GET')]
-    public function pokemon($pokemon = null, HttpClientInterface $generateCliente) : Response
+    public function pokemon($pokemon = null, HttpClientInterface $generateClient) : Response
     {
+
         $response = new Response();
+        $validUser = $this -> getUser();
+        if(!$validUser){
+            return new Response('acceso denegado, porfavor autenticate.');
+        }
         if ($pokemon) { 
-            $response = $generateCliente->request(
+            $response = $generateClient->request(
                 'GET',
                 'https://pokeapi.co/api/v2/pokemon/'.$pokemon
             );
@@ -28,7 +34,7 @@ class ApiRequestController extends AbstractController {
             return new JsonResponse($content);
         } 
         else{
-            $response = $generateCliente->request(
+            $response = $generateClient->request(
                 'GET',
                 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0'
             );
@@ -41,6 +47,5 @@ class ApiRequestController extends AbstractController {
             return new JsonResponse($content);
         }
     }
-
 }
 ?>

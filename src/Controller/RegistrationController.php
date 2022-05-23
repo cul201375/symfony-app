@@ -19,7 +19,7 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register', methods: 'GET')]
     public function register(): Response
     {
-        return $this->render('registration/regis.html.twig');
+        return $this->render('registration/register.html.twig');
     }
     #[Route('/register', name: 'app_register_val', methods:'POST')]
     public function validar(Request $request, 
