@@ -2,5 +2,4 @@
 import './styles/app.css';
 
 // importaciones de js
-import './controller/main_controller';
-import './javascript/home_page';
+import './javascript/app'

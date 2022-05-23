@@ -1,6 +1,7 @@
 @import '~bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all';
 
-body{
-    background-color: rgb(236, 239, 43) !important;
+.login_page{
+    background: linear-gradient(9deg, rgba(255,249,0,0.6774881827731092) 0%, 
+    rgba(255,0,0,0.6886926645658263) 100%) !important;
 }

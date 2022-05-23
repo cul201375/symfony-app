@@ -5,9 +5,11 @@
         <div class="container">
             <span class="navbar-brand mb-0 h1">Pokedex</span>
             {% if app.user %}
-                <div class="mb-3">
-                    Bienvenido {{ app.user.getPrimerNombre }}, <a class="btn btn-primary" href="{{ path('app_logout') }}"><i class="fas fa-sign-out"></i></a>
+                <div class="mb-3 p-2 text-white">
+                    Bienvenido {{ app.user.getPrimerNombre }}
                 </div>
+
+                <a class="btn btn-primary" href="{{ path('app_logout') }}"><i class="fas fa-sign-out"></i></a>
             {% endif %}  
         </div>
     </nav>
