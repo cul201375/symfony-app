@@ -32,16 +32,32 @@
             </div>
         </div>
     </div>
-   
+
+   <div class="h1 mb-3 p-2 text-dark w-100 text-center">Tus pokemóns</div>
+
     <div id="content-loader" class="w-100 text-center">
         <div id="loader" class="spinner-border text-secondary" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    
+
+    {# <pre>
+        {{ dump(data.results) }}
+    </pre>
+    {% if data != null %}
+        {% for item in data.results %}
+            <div class="card-body">
+                <img class="card-img-top" src="">
+                <h1 class="cart-title">{{item.name}}</h1>
+                <p class="card-text"></p>
+                <a class="link" href="{{item.url}}">{{item.url}}</a>
+            </div> 
+        {% endfor %}
+    {% endif %} #}
     <div id="listofpokemos" class="container d-flex justify-content-sm-around flex-wrap border pt-2 pb-2">
-        
+       
     </div>
+
     <div id="pagination-container" class="container d-flex justify-content-center">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
