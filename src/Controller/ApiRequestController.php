@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class ApiRequestController extends AbstractController {
 
     //GET POKEMOS ENDPOINT
-    #[Route('/api/v1/pokemons/{pokemon}', name: 'api_get_pokemon', methods: 'GET')]
+    #[Route('/api/v1/pokemons/{pokemon}', name: 'app_api_get_pokemon', methods: 'GET')]
     public function pokemon($pokemon = null, HttpClientInterface $generateClient) : Response
     {
 
@@ -36,7 +36,7 @@ class ApiRequestController extends AbstractController {
         else{
             $response = $generateClient->request(
                 'GET',
-                'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0'
+                'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0'
             );
     
             $statusCode = $response->getStatusCode();
