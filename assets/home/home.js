@@ -1,39 +1,39 @@
 import $ from 'jquery';
 import axios from 'axios';
 
- $(function(){
-     $.ajax(
-         {
-             url: 'http://127.0.0.1:8000/api/v1/pokemons/',
-             type: 'get',
-             dataType: 'json',
-             beforeSend: function() {
+$(function () {
+    $.ajax(
+        {
+            url: 'http://127.0.0.1:8000/api/v1/pokemons/',
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function () {
                 $('#content-loader').show();
                 $('#loader').show();
-              },
-              complete: function(){
+            },
+            complete: function () {
                 $('#loader').hide();
                 $('#content-loader').hide();
-              },
-              success: function(resp) {          
+            },
+            success: function (resp) {
                 for (let x of resp.results) {
-                    axios.get('https://pokeapi.co/api/v2/pokemon-form/'+x.name+'/')
-                    .then((resp) => {
+                    axios.get('https://pokeapi.co/api/v2/pokemon-form/' + x.name + '/')
+                        .then((resp) => {
                             $('#listofpokemos').append(crearCarta(resp.data));
-                          }
-                    )
-                    .catch((error) => {
-                              console.log(error); 
-                          }
-                    );
+                        }
+                        )
+                        .catch((error) => {
+                            console.log(error);
+                        }
+                        );
                 }
             }
         }
     );
-   
- });
 
-function crearCarta(object){
+});
+
+function crearCarta(object) {
     const div = document.createElement('div');
     const divbody = document.createElement('div');
     const p = document.createElement('p');
@@ -52,7 +52,7 @@ function crearCarta(object){
 
     img.setAttribute('src', object.sprites.front_default)
     h1.innerHTML = object.name;
-    p.innerHTML = 'ID: '+object.id;
+    p.innerHTML = 'ID: ' + object.id;
     a.setAttribute('href', '#');
     a.innerHTML = object.url;
     divbody.appendChild(img);
@@ -65,18 +65,34 @@ function crearCarta(object){
     return div;
 }
 
-$('#btnSeachPokemon').on('click', function(){
+$('#btnSeachPokemon').on('click', function () {
     var pokemon_name = $('#search_pokemon').val();
-    axios.get('http://127.0.0.1:8000/api/v1/pokemons/'+pokemon_name)
-    .then(
-        (resp) => {
-            var img = resp.data.sprites.other; 
-            $('#imgPokemonFrontView').attr('src', img.dream_world.front_default);
-        }
-    )
-    .catch(
-        (resp) => {
-            console.log(resp)
-        }
-    );
+    axios.get('http://127.0.0.1:8000/api/v1/pokemons/' + pokemon_name)
+        .then(
+            (resp) => {
+                var img = resp.data.sprites.other;
+                $('#imgPokemonFrontView').attr('src', img.dream_world.front_default);
+            }
+        )
+        .catch(
+            (resp) => {
+                console.log(resp)
+            }
+        );
 });
+
+
+$('#view-user-profile').on('click',()=>{
+    getPerfil();
+});
+function getPerfil(){
+    $.ajax({
+        url: 'http://127.0.0.1:8000/profile',
+        type: 'get',
+        dataType: 'json',
+        success: function (resp) {
+            console.log(resp);
+            $('#respuesta').append(resp.html);
+        }
+    });
+}

@@ -8,8 +8,8 @@
                 <div class="mb-3 p-2 text-white">
                     Bienvenido {{ app.user.getPrimerNombre | upper }}
                 </div>
-
                 <a class="btn btn-primary" href="{{ path('app_logout') }}"><i class="fas fa-sign-out"></i></a>
+                <button class="btn btn-primary" id="view-user-profile">Perfil</button>
             {% endif %}  
         </div>
     </nav>
@@ -19,7 +19,6 @@
             <div class="d-flex flex-row w-50" >
                 <input class="w-100 form-control" name="search_pokemon" id="search_pokemon" placeholder="Buscar un Pokemon" type="text">
             </div>
-
             <button id="btnSeachPokemon" class="btn btn-danger w-50">
                 Load pokemon
             </button>
@@ -33,7 +32,8 @@
         </div>
     </div>
 
-   <div class="h1 mb-3 p-2 text-dark w-100 text-center">Tus pokemóns</div>
+    <div class="h1 mb-3 p-2 text-dark w-100 text-center">Tus pokemóns</div>
+    <div id="respuesta"></div>
 
     <div id="content-loader" class="w-100 text-center">
         <div id="loader" class="spinner-border text-secondary" role="status">
@@ -41,19 +41,6 @@
         </div>
     </div>
 
-    {# <pre>
-        {{ dump(data.results) }}
-    </pre>
-    {% if data != null %}
-        {% for item in data.results %}
-            <div class="card-body">
-                <img class="card-img-top" src="">
-                <h1 class="cart-title">{{item.name}}</h1>
-                <p class="card-text"></p>
-                <a class="link" href="{{item.url}}">{{item.url}}</a>
-            </div> 
-        {% endfor %}
-    {% endif %} #}
     <div id="listofpokemos" class="container d-flex justify-content-sm-around flex-wrap border pt-2 pb-2">
        
     </div>
