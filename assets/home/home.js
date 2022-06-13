@@ -4,7 +4,7 @@ import axios from 'axios';
 $(function () {
     $.ajax(
         {
-            url: 'http://127.0.0.1:8000/api/v1/pokemons/',
+            url: 'https://127.0.0.1:8000/api/v1/pokemons/',
             type: 'get',
             dataType: 'json',
             beforeSend: function () {
@@ -67,7 +67,7 @@ function crearCarta(object) {
 
 $('#btnSeachPokemon').on('click', function () {
     var pokemon_name = $('#search_pokemon').val();
-    axios.get('http://127.0.0.1:8000/api/v1/pokemons/' + pokemon_name)
+    axios.get('https://127.0.0.1:8000/api/v1/pokemons/' + pokemon_name)
         .then(
             (resp) => {
                 var img = resp.data.sprites.other;
@@ -83,22 +83,15 @@ $('#btnSeachPokemon').on('click', function () {
 
 
 $('#view-user-profile').on('click',()=>{
-    $.ajax({
-        url: 'http://127.0.0.1:8000/profile',
-        type: 'get',
-        dataType: 'json',
-        success: function (resp) {
-            console.log(resp);
-            $('#respuesta').append(resp.html);
-        }
-    });
+    console.log(getDomain());
+   
 });
 
 
 $('#test-mailer').on('click', () => {
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:8000/mail/test/notification/send',
+        url: 'https://127.0.0.1:8000/mail/test/notification/send',
         dataType: 'text',
         success: function(resp){
             alert(resp);

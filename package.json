@@ -1,7 +1,6 @@
 {
     "devDependencies": {
         "@hotwired/turbo": "^7.0.1",
-        "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
         "@symfony/webpack-encore": "^2.0.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
