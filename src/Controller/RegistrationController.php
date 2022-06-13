@@ -21,7 +21,6 @@ class RegistrationController extends AbstractController
     {
         return $this->render('registration/register.html.twig');
     }
-    
     #[Route('/register', name: 'app_register_val', methods:'POST')]
     public function validar(Request $request, 
     UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, 

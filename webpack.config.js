@@ -43,7 +43,7 @@ Encore
              //to: 'images/[path][name].[hash:8].[ext]',
     
              // only copy files matching this pattern
-             pattern: /\.(png|jpg|jpeg|gif)$/
+             pattern: /\.(png|jpg|jpeg)$/
     })
     /*
      * FEATURE CONFIG
