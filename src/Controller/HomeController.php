@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use LDAP\Result;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGenerator;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
+
 
 class HomeController extends AbstractController{
 
@@ -18,22 +21,24 @@ class HomeController extends AbstractController{
     {
         $user = $this->getUser();
         if ($user != null) {
-            // $response = $generateClient->request(
-            //     'GET',
-            //     'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0'
-            // );
-    
-            // , ['data' => $content]
-            
-            // $statusCode = $response->getStatusCode();
-            // $contentType = $response->getHeaders()['content-type'][0];
-            // $content = $response->getContent();
-            // $content = $response->toArray();
             return $this->render('home/home.html.twig');
         }
         else{
             return $this->redirect('/');
         }
+    }
+
+    #[Route('/mail/test/notification/send', name: 'app_tests_mail_notification', methods: 'GET')]
+    public function sendMail(MailerInterface $mailer) : Response
+    {
+        $email = (new Email())
+            ->from('emanuel.castillo0118@outlook.es')
+            ->to('user@example.com')
+            ->subject('Time for Symfony Mailer!')
+            ->text('Sending emails is fun again!')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
+        $mailer->send($email);
+        return new Response('done');
     }
 }
 

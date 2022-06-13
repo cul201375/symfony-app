@@ -83,9 +83,6 @@ $('#btnSeachPokemon').on('click', function () {
 
 
 $('#view-user-profile').on('click',()=>{
-    getPerfil();
-});
-function getPerfil(){
     $.ajax({
         url: 'http://127.0.0.1:8000/profile',
         type: 'get',
@@ -95,4 +92,16 @@ function getPerfil(){
             $('#respuesta').append(resp.html);
         }
     });
-}
+});
+
+
+$('#test-mailer').on('click', () => {
+    $.ajax({
+        type: 'GET',
+        url: 'http://127.0.0.1:8000/mail/test/notification/send',
+        dataType: 'text',
+        success: function(resp){
+            alert(resp);
+        }
+    });
+})
